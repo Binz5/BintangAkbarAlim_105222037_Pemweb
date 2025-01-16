@@ -21,7 +21,6 @@
                 </button>
             </div>
             <div class="modal-body">
-                <!-- Tambahkan Inputan Form Login -->
                 <div class="form-group">
                     <label for="login">Email / Username</label>
                     <input type="text" class="form-control" id="login" name="login" placeholder="Email atau Username" required>
