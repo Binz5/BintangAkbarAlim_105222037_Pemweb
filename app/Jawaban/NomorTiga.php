@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Jawaban;
 
 use Illuminate\Support\Facades\Auth;
@@ -8,30 +7,26 @@ use App\Models\Event;
 
 class NomorTiga {
 
-	public function getData () {
-		// Tuliskan code mengambil semua data jadwal user, simpan di variabel $data 
-		$data = [];
-		return $data;
-	}
+    public function getData() {
+        $data = Event::where('user_id', Auth::id())->get();
+        return $data;
+    }
 
-	public function getSelectedData (Request $request) {
+    public function getSelectedData(Request $request) {
+        $validated = $request->validate([
+            'event_id' => 'required|exists:events,id',
+        ]);
 
-		// Tuliskan code mengambil 1 data jadwal user dengan id jadwal, simpan di variabel $data 
-		$data = [];
-		return response()->json($data);
-	}
+        $data = Event::find($validated['event_id']);
+        return response()->json($data);
+    }
 
-	public function update (Request $request) {
+    public function update(Request $request) {
+        
+    }
 
-		// Tuliskan code mengupdate 1 jadwal
-		return redirect()->route('event.home');
-	}
-
-	public function delete (Request $request) {
-
-		// Tuliskan code menghapus 1 jadwal
-		return redirect()->route('event.home');
-	}
+    public function delete(Request $request) {
+        
+    }
 }
-
 ?>
